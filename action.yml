@@ -1,4 +1,4 @@
-name: '42 Project Badge'
+name: '42 Project Badge (API Key)'
 description: 'Create badges via shields.io/endpoint for your README.md which may change with every commit.'
 branding:
   icon: 'box'
