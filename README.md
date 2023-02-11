@@ -67,10 +67,9 @@ Embed the badge with:
 
 ## Example usage
 ```yml
-# .github/workflows/42project-badge-action.yml
+# .github/workflows/create-42badges.yml
 name: 42 Project Badge (API Key)
 on:
-
   push:
     branches: [ "main" ]
   pull_request:
@@ -85,14 +84,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 42 Project Badge (API Key)
-        uses: RicardoVelaC/42project-badge-action@v1.0.3
+        uses: RicardoVelaC/42project-badge-action@v1.0.4
         with:
-          login: marvin
+          login: rvela-ca
           api_uid: ${{ secrets.API42_UID }}
           api_secret: ${{ secrets.API42_SECRET }}
           project: libft
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: e68282bd835f9dab85e2c6b9b5522143
+          gistID: 3abf255a1d4c547c0df18fd79a3fa27d
 ```
 
 ## Example badge display
