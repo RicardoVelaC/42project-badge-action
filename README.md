@@ -14,6 +14,8 @@ This action allows you to generates badges related to your 42 project for your R
   uses: Korkrane/42project-badge-action@v1.0.0
   with:
     login: <your-42-login>
+    api_uid: ${{ secrets.API42_UID }}
+    api_secret: ${{ secrets.API42_SECRET }}
     project: <your-42-project>
     auth: ${{ secrets.GIST_SECRET }}
     gistID: <gist-ID>
@@ -21,12 +23,15 @@ This action allows you to generates badges related to your 42 project for your R
 
 ### Required Input Parameters
 
-Parameter | Description
-----------|------------
-`login` | Your 42 login
-`project` | A 42 project name
-`auth` | A secret token with the *gist* scope.
-`gistID` | The ID of the target gist. Something like `8f6459c2417de7534f64d98360dde866`.
+| Parameter    | Description                                                                   |
+| ------------ | ----------------------------------------------------------------------------- |
+| `login`      | Your 42 login                                                                 |
+| `api_uid`    | Your personal 42 API uid                                                      |
+| `api_secret` | Your personal 42 API secret                                                   |
+| `login`      | Your 42 login                                                                 |
+| `project`    | A 42 project name                                                             |
+| `auth`       | A secret token with the *gist* scope.                                         |
+| `gistID`     | The ID of the target gist. Something like `8f6459c2417de7534f64d98360dde866`. |
 
 ## How Does It Work?
 

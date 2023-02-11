@@ -8,6 +8,12 @@ inputs:
     description: 'Your 42 login'
     required: true
     type: string
+  api_uid:
+    description: 'Your personal 42 API uid'
+    required: true
+  api_secret:
+    description: 'Your personal 42 API secret'
+    required: true
   project:
     description: 'Your 42 project name'
     required: true
@@ -26,7 +32,7 @@ runs:
     - name: Checkout tools repo
       uses: actions/checkout@v3
       with:
-        repository: Korkrane/42project-badge-action
+        repository: RicardoVelaC/42project-badge-action
     - name: setup python
       uses: actions/setup-python@v2
       with:
@@ -45,13 +51,7 @@ runs:
       shell: bash
     - name: execute py script # run the run.py to get the latest data
       run: |
-       id1="b792583c7014323d46f61b4e30cbef"
-       id2="ed1ebe20f98a7348d776320536c0eff081"
-       full_id=$id1$id2
-       secret1="43c21b76ab2f90127229d07aaa4a3"
-       secret2="859edfa833bf5aab312686863d830e6c729"
-       full_secret=$secret1$secret2
-       token=$(curl -X POST --data "grant_type=client_credentials&client_id=$full_id&client_secret=$full_secret" https://api.intra.42.fr/oauth/token)
+       token=$(curl -X POST --data "grant_type=client_credentials&client_id=${{ inputs.api_uid }}&client_secret=${{ inputs.api_secret }}" https://api.intra.42.fr/oauth/token)
        python main.py $token ${{ inputs.login }} > log
        grade=$(cat log | grep "${{ inputs.project }}" | cut -d ":" -f2)
        corr=$(cat log | grep "${{ inputs.project }}" | cut -d ":" -f3-)
