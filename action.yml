@@ -34,7 +34,7 @@ runs:
       with:
         repository: RicardoVelaC/42project-badge-action
     - name: setup python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: 3.8 #install the python needed
     - name: setup python packages
@@ -68,7 +68,7 @@ runs:
        fi
       shell: bash
     - name: Dynamic Badges Grade
-      uses: Schneegans/dynamic-badges-action@v1.4.0
+      uses: Schneegans/dynamic-badges-action@v1.6.0
       with:
         auth: ${{ inputs.auth }}
         gistID: ${{ inputs.gistID }}
@@ -91,7 +91,7 @@ runs:
         fi
       shell: bash
     - name: Dynamic Badges Bonus
-      uses: Schneegans/dynamic-badges-action@v1.4.0
+      uses: Schneegans/dynamic-badges-action@v1.6.0
       with:
         auth: ${{ inputs.auth }}
         gistID: ${{ inputs.gistID }}
@@ -101,7 +101,7 @@ runs:
         color:  ${{ env.COLOR }}
         style: flat-square
     - name: Dynamic Badges Bonus
-      uses: Schneegans/dynamic-badges-action@v1.4.0
+      uses: Schneegans/dynamic-badges-action@v1.6.0
       with:
         auth: ${{ inputs.auth }}
         gistID: ${{ inputs.gistID }}

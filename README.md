@@ -10,15 +10,15 @@ This action allows you to generates badges related to your 42 project for your R
 3. Go to the *Secrets* page of the settings of your repository and add this token as a new secret. You can give it any name, for example `GIST_SECRET`.
 4. Add something like the following to your workflow:
 ```yml
-- name: 42 Project Badge
-  uses: Korkrane/42project-badge-action@v1.0.0
+- name: 42 Project Badge (API Key)
+  uses: RicardoVelaC/42project-badge-action@v1.0.3
   with:
     login: <your-42-login>
     api_uid: ${{ secrets.API42_UID }}
     api_secret: ${{ secrets.API42_SECRET }}
     project: <your-42-project>
     auth: ${{ secrets.GIST_SECRET }}
-    gistID: <gist-ID>
+    gistID: <your-gist-ID>
 ```
 
 ### Required Input Parameters
@@ -67,8 +67,8 @@ Embed the badge with:
 
 ## Example usage
 ```yml
-# .github/workflows/main.yml
-name: 42-project-badge
+# .github/workflows/42project-badge-action.yml
+name: 42 Project Badge (API Key)
 on:
 
   push:
@@ -84,11 +84,13 @@ jobs:
       - name: Checkout repo content
         uses: actions/checkout@v3
 
-      - name: 42 Project Badge
-        uses: Korkrane/42project-badge-action@v1.0.0
+      - name: 42 Project Badge (API Key)
+        uses: RicardoVelaC/42project-badge-action@v1.0.3
         with:
-          login: bahhas
-          project: dr-quine
+          login: marvin
+          api_uid: ${{ secrets.API42_UID }}
+          api_secret: ${{ secrets.API42_SECRET }}
+          project: libft
           auth: ${{ secrets.GIST_SECRET }}
           gistID: e68282bd835f9dab85e2c6b9b5522143
 ```
