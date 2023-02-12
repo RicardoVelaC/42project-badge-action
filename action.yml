@@ -51,8 +51,8 @@ runs:
       shell: bash
     - name: execute py script # run the run.py to get the latest data
       run: |
-       token=$(curl -X POST --data "grant_type=client_credentials&client_id=${{ inputs.api_uid }}&client_secret=${{ inputs.api_secret }}" https://api.intra.42.fr/oauth/token)
-       python main.py $token ${{ inputs.login }} > log
+       curl -X POST --data "grant_type=client_credentials&client_id=${{ inputs.api_uid }}&client_secret=${{ inputs.api_secret }}" https://api.intra.42.fr/oauth/token > token.json
+       python main.py token.json ${{ inputs.login }} > log
        grade=$(cat log | grep "${{ inputs.project }}" | cut -d ":" -f2)
        corr=$(cat log | grep "${{ inputs.project }}" | cut -d ":" -f3-)
        echo "GRADE=$grade" >> $GITHUB_ENV

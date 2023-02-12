@@ -1,7 +1,12 @@
 import requests, json, sys, time
 
-data=json.loads(sys.argv[1])
-token=data['access_token']
+f = open(sys.argv[1])
+  
+# returns JSON object as a dictionary
+data = json.load(f)
+
+token = data['access_token']
+user = str(sys.argv[2])
 
 headers = {
     "Authorization": "Bearer " + token,
@@ -81,7 +86,6 @@ def getUserProjectsUsersData(headers, user, page):
 
 limit = 0
 page = 1
-user = str(sys.argv[2])
 while page == 1 or limit % 30 == 0:
     getUserProjectsUsersData(headers, user, page)
     page += 1
